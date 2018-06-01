@@ -26,6 +26,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "mocha": "^5.2.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   }
