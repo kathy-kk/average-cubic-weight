@@ -10,6 +10,9 @@ class App extends Component {
     };
   }
   componentDidMount() {
+   this.updateAverageWeight()
+  }
+  updateAverageWeight() {
     fetchData("Air Conditioners").then(objects_of_category => {
       const average = averageWeight(objects_of_category);
       this.setState({
