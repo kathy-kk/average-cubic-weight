@@ -13,7 +13,7 @@ class App extends Component {
     fetchData("Air Conditioners").then(objects_of_category => {
       const average = averageWeight(objects_of_category);
       this.setState({
-        average: Math.floor(average * 100) / 100
+        average: average.toFixed(4)
       });
     });
   }
