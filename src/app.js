@@ -6,25 +6,33 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      average: 0
+      average: 0,
+      error: null
     };
   }
   componentDidMount() {
    this.updateAverageWeight()
   }
-  updateAverageWeight() {
-    fetchData("Air Conditioners").then(objects_of_category => {
+
+  async updateAverageWeight() {
+    try{
+      const objects_of_category = await fetchData("Air Conditioners");
       const average = averageWeight(objects_of_category);
       this.setState({
-        average: average.toFixed(4)
+        average: average.toFixed(4),
+        error: null
       });
-    });
-  }
+     }catch(error){
+       this.setState({
+         error: 'something is wrong'
+       })
+     }
+    }
   render() {
     return (
       <div>
         <h1>Average Weight:</h1>
-        <h2>{`${this.state.average}Kg`}</h2>
+        <h2>{ this.state.error? this.state.error:`${this.state.average}Kg`}</h2>
       </div>
     );
   }
