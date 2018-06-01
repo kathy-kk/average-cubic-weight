@@ -1,6 +1,5 @@
-const BASE_URL = 'http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com'
 const API_ENDPOINT_START = '/api/products/1';
-
+const BASE_URL = process.env.BASE_URL
 
 async function fetchData (category) {
  return fetchRecursive(BASE_URL + API_ENDPOINT_START, category, [])

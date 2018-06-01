@@ -2,6 +2,10 @@
 
 # language
    Node v7.2.1
+
+# configure .env
+  copy .env.example .env
+
 # Install dependencies
 $ npm install
 
