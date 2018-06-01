@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import fetchData from "./service";
-import calculation from "./calculation";
+import averageWeight from "./averageWeight";
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends Component {
   }
   componentDidMount() {
     fetchData("Air Conditioners").then(objects_of_category => {
-      const average = calculation(objects_of_category).average;
+      const average = averageWeight(objects_of_category);
       this.setState({
         average: Math.floor(average * 100) / 100
       });
