@@ -1,12 +1,10 @@
-const API_ENDPOINT_START = '/api/products/1';
-const BASE_URL = process.env.BASE_URL
 
-async function fetchData (category) {
- return fetchRecursive(BASE_URL + API_ENDPOINT_START, category, [])
+async function fetchData (category, base_url, start_url) {
+ return fetchRecursive(base_url, start_url, category, [])
 }
 
-async function fetchRecursive (api_endpoint, category, objects_accumulator){
-  const responseData = await fetchAction(api_endpoint);
+async function fetchRecursive (base_url, start_url, category, objects_accumulator){
+  const responseData = await fetchAction(base_url + start_url);
   const objects_of_category = responseData.objects
                               .filter(object => 
                                 object.category == category
@@ -15,7 +13,7 @@ async function fetchRecursive (api_endpoint, category, objects_accumulator){
   if(!next)
     return [ ...objects_accumulator, ...objects_of_category]
   else 
-    return fetchRecursive(BASE_URL + next, category, [ ...objects_accumulator, ...objects_of_category])
+    return fetchRecursive( base_url ,next, category, [ ...objects_accumulator, ...objects_of_category])
   
 }
 
